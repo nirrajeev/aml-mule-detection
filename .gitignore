@@ -1,0 +1,25 @@
+# Data — never commit
+data/
+cache/
+share/
+outputs/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+*.egg-info/
+dist/
+
+# Logs and models
+logs/
+checkpoints/
+*.log
+*.pt
+*.pkl
+*.bin
+
+# Env
+.env
+venv/
