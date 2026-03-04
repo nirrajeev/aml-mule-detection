@@ -1,0 +1,70 @@
+name: aml
+
+channels:
+  - conda-forge
+  - nvidia
+  - pytorch
+  - defaults
+
+dependencies:
+  - python=3.10
+  - pip
+
+  # Fix C++ runtime issues
+  - libstdcxx-ng
+  - libgcc-ng
+  - compilers
+
+  # Core stack
+  - numpy
+  - scipy
+  - pandas
+  - polars
+  - pyarrow
+  - fastparquet
+
+  # Visualization
+  - matplotlib
+  - seaborn
+  - plotly
+  - jupyter
+  - ipykernel
+
+  # Utilities
+  - tqdm
+  - pyyaml
+
+  - pip:
+
+      # IMPORTANT: indexes first
+      - --extra-index-url https://pypi.nvidia.com
+      - --extra-index-url https://download.pytorch.org/whl/cu121
+      - --find-links https://data.pyg.org/whl/torch-2.3.0+cu121.html
+
+      # RAPIDS
+      - cudf-cu12
+      - cuml-cu12
+      - cugraph-cu12
+
+      # ML
+      - lightgbm
+      - xgboost
+      - catboost
+      - scikit-learn
+      - optuna
+
+      # PyTorch
+      - torch
+      - torchvision
+
+      # PyG
+      - torch_geometric
+      - pyg_lib
+      - torch_scatter
+      - torch_sparse
+      - torch_cluster
+
+      # Utilities
+      - rich
+      - python-dotenv
+      - rclone-python

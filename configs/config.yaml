@@ -1,0 +1,30 @@
+project:
+  name: aml-mule-detection
+  seed: 42
+
+paths:
+  data: /home/niranjan/AML/data
+  cache: /home/niranjan/AML/cache
+  share: /home/niranjan/AML/share
+  logs: /home/niranjan/AML/logs
+  outputs: /home/niranjan/AML/outputs
+
+gpu:
+  primary: 3
+  secondary: [0,1,2]  # use when free
+
+data:
+  txn_parts_glob: "data/transactions/batch-*/part_*.parquet"
+  txn_add_parts_glob: "data/transactions_additional/batch-*/part_*.parquet"
+
+thresholds:
+  structuring_lower: 45000
+  structuring_upper: 50000
+  round_amounts: [1000, 5000, 10000, 50000, 100000]
+  dormancy_days: 90        # inactive for 90+ days = dormant
+  passthrough_hours: 24    # credit→debit within 24h = suspicious
+
+training:
+  test_size: 0.2
+  cv_folds: 5
+  early_stopping_rounds: 50
